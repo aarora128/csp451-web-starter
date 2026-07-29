@@ -51,3 +51,11 @@ To intentionally create a merge conflict, edit the same lines in one of:
 npm test
 npm run lint
 ```
+## Database Configuration
+
+The database module reads its settings from environment variables:
+
+- `DB_URL` — connection string for the store (defaults to `memory://local`)
+- `DB_POOL` — number of pooled connections (defaults to `4`)
+
+If these are not set, the module falls back to an in-memory store, which is what this checkpoint uses.
