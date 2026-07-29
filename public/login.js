@@ -7,6 +7,18 @@
  */
 const form = document.getElementById("loginForm");
 const message = document.getElementById("message");
+const button = form.querySelector("button[type='submit']");
+
+// Simple email format check
+function isValidEmail(value) {
+  return /^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(value);
+}
+
+// Show a status message with a state class for styling
+function setMessage(text, state) {
+  message.textContent = text;
+  message.className = state ? `muted ${state}` : "muted";
+}
 
 form.addEventListener("submit", (e) => {
   e.preventDefault();
@@ -14,11 +26,23 @@ form.addEventListener("submit", (e) => {
   const email = document.getElementById("email").value.trim();
   const password = document.getElementById("password").value;
 
-  // Minimal checks (students can improve)
-  if (!email || password.length < 6) {
-    message.textContent = "Please enter a valid email and a password (min 6 characters).";
+  // Inline validation with specific error messages
+  if (!isValidEmail(email)) {
+    setMessage("Please enter a valid email address.", "error");
+    return;
+  }
+  if (password.length < 6) {
+    setMessage("Password must be at least 6 characters.", "error");
     return;
   }
 
-  message.textContent = "Login submitted (stub). Implement authentication in your feature branch.";
+  // Loading feedback state
+  setMessage("Signing in...", "loading");
+  button.disabled = true;
+
+  // Simulate an async auth attempt (would call POST /api/auth/login)
+  setTimeout(() => {
+    button.disabled = false;
+    setMessage("Login validated on the client. Ready to call the API.", "success");
+  }, 600);
 });
