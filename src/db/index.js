@@ -28,6 +28,9 @@ function connect() {
 
 // Return rows from a table that match an optional filter
 function query(table, predicate = () => true) {
+  if (typeof predicate !== "function") {
+    throw new TypeError("query(): predicate must be a function");
+  }
   const rows = store.get(table) || [];
   return rows.filter(predicate);
 }
