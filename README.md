@@ -14,7 +14,7 @@ This repository is a **starter template** for practicing:
 > "chore: remove sample conflict markers"`. See Walkthrough Step 2 for full
 > guidance.
 
-## Quick Start
+## Quick Start (Auth + API Branch Notes)
 
 ```bash
 # 1. Remove the sample conflict markers in src/app.js first (see note above)
@@ -51,8 +51,7 @@ To intentionally create a merge conflict, edit the same lines in one of:
 npm test
 npm run lint
 ```
-## Database Module
-`src/db/index.js` uses an in-memory store for local development.
-Configure it via environment variables:
-- `DB_URL` — connection string placeholder (defaults to `memory://local`)
-- `DB_POOL` — pool size placeholder (defaults to `4`)
+## API Notes
+`/api/items` is backed by an in-memory array for this checkpoint — data resets
+whenever the server restarts. This will be swapped to persist through
+`src/db` once merged with `feature/database-connection`.
