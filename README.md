@@ -51,3 +51,7 @@ To intentionally create a merge conflict, edit the same lines in one of:
 npm test
 npm run lint
 ```
+## API Notes
+`/api/items` is backed by an in-memory array for this checkpoint — data resets
+whenever the server restarts. This will be swapped to persist through
+`src/db` once merged with `feature/database-connection`.
