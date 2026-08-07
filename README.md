@@ -51,3 +51,8 @@ To intentionally create a merge conflict, edit the same lines in one of:
 npm test
 npm run lint
 ```
+## Database Module
+`src/db/index.js` uses an in-memory store for local development.
+Configure it via environment variables:
+- `DB_URL` — connection string placeholder (defaults to `memory://local`)
+- `DB_POOL` — pool size placeholder (defaults to `4`)
