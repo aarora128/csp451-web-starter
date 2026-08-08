@@ -55,3 +55,4 @@ npm run lint
 `/api/items` is backed by an in-memory array for this checkpoint — data resets
 whenever the server restarts. This will be swapped to persist through
 `src/db` once merged with `feature/database-connection`.
+
